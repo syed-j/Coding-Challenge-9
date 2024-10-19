@@ -85,3 +85,21 @@ class Patron {
     }
 }
 
+// Define a class named "VIPPatron" that extends the "Patron" class to represent a VIP library member
+class VIPPatron extends Patron {
+    constructor(name, priority) {
+        super(name); 
+        this.priority = priority;
+    }
+
+    // Override the borrowBook method to add VIP-specific borrowing logic
+    borrowBook(book) {
+        if (book.isAvailable || this.priority) { // VIP patron can borrow if the book is available or they have priority
+            book.isAvailable = false; // Mark the book as not available
+            this.borrowedBooks.push(book); // Add the book to the VIP patron's borrowedBooks list
+            console.log(`VIP Patron ${this.name} borrowed "${book.title}".`);
+        } else {
+            console.log(`"${book.title}" is currently not available, even for VIP.`); // Inform if the book can't be borrowed, even by VIP
+        }
+    }
+}
