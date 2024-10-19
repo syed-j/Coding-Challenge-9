@@ -53,3 +53,35 @@ class Section {
         return this.getAvailableBooks(); // Use the getAvailableBooks() method for calculation
     }
 }
+
+// Define a class named "Patron" to represent a library member who can borrow and return books
+class Patron {
+    constructor(name) {
+        this.name = name; 
+        this.borrowedBooks = []; 
+    }
+
+    // Method for the patron to borrow a book, if it is available
+    borrowBook(book) {
+        if (book.isAvailable) { // Check if the book is available
+            book.isAvailable = false; // Mark the book as not available
+            this.borrowedBooks.push(book); // Add the book to the patron's borrowedBooks list
+            console.log(`${this.name} borrowed "${book.title}".`);
+        } else {
+            console.log(`"${book.title}" is currently not available.`);
+        }
+    }
+
+    // Method for the patron to return a previously borrowed book
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book); // Find the index of the book in the borrowedBooks array
+        if (index !== -1) { // Check if the book is in the list of borrowed books
+            book.isAvailable = true; // Mark the book as available again
+            this.borrowedBooks.splice(index, 1); // Remove the book from the patron's borrowedBooks list
+            console.log(`${this.name} returned "${book.title}".`); 
+        } else {
+            console.log(`${this.name} does not have "${book.title}" borrowed.`);
+        }
+    }
+}
+
