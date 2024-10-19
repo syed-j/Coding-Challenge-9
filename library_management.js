@@ -24,3 +24,32 @@ class Book {
     }
 }
 
+// Define a class named "Section" to represent a library section containing multiple books
+class Section {
+    constructor(name) {
+        this.name = name; 
+        this.books = []; 
+    }
+
+    // Method to add a Book object to the "books" array in the section
+    addBook(book) {
+        this.books.push(book);
+    }
+
+    // Method to get the total number of available books in the section
+    getAvailableBooks() {
+        return this.books.filter(book => book.isAvailable).length;
+    }
+
+    // Method to list all books in the section, displaying their title and availability status
+    listBooks() {
+        this.books.forEach(book => {
+            console.log(`${book.getDetails()} - Available: ${book.isAvailable}`); // Display details of each book
+        });
+    }
+    
+    // Method to calculate the total number of books that can still be borrowed from the section
+    calculateTotalBooksAvailable() {
+        return this.getAvailableBooks(); // Use the getAvailableBooks() method for calculation
+    }
+}
