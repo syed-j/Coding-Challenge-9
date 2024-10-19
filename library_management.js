@@ -137,3 +137,5 @@ fiction.listBooks();
 // Display the total number of books available for borrowing in each section
 console.log(`Total available books in Fiction: ${fiction.calculateTotalBooksAvailable()}`);
 console.log(`Total available books in Science: ${science.calculateTotalBooksAvailable()}`);
+
+// Mixed step 5 and 6 so last commit
